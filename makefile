@@ -36,7 +36,7 @@ OBJECTS=$(addprefix $(BUILD_DIR)/, $(OBJECTS_TMP))
 DEPFILES_TMP:=$(SOURCES_TMP:.cpp=.d)
 DEPFILES=$(addprefix $(BUILD_DIR)/, $(DEPFILES_TMP))
 
-EXEC_NAMES = printnm kernel-mis
+EXEC_NAMES = kernel-mis
 
 EXECS = $(addprefix $(BIN_DIR)/, $(EXEC_NAMES))
 

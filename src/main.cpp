@@ -118,13 +118,10 @@ void PrintUsageMessage() {
     cout << "USAGE: Where --input-file is in METIS format, with file name ending in .graph." << endl << flush;
     cout << "USAGE: " << endl << flush;
     cout << "USAGE: And --experiment is one of: " << endl << flush;
-    cout << "USAGE: \tkernel-size" << endl << flush;
-    cout << "USAGE: \tfast-kernel-size" << endl << flush;
-    cout << "USAGE: \tcritical-independent-set" << endl << flush;
+    cout << "USAGE: \tkernel-size-simple" << endl << flush;
     cout << "USAGE: \tkernel-size-critical-set" << endl << flush;
     cout << "USAGE: \tkernel-size-maximum-critical-set" << endl << flush;
-    cout << "USAGE: \tmcis" << endl << flush;
-    cout << "USAGE: \tkernel-component-no-reduction-miss" << endl << flush;
+    cout << "USAGE: \tsimple-mcs" << endl << flush;
 }
 
 void RunExperiment(string const &sInputFile, string const &sExperimentName, bool const bOutputLatex, bool const bPrintHeader, vector<vector<int>> const &adjacencyArray, vector<vector<char>> const &vAdjacencyMatrix, double const dTimeout)
@@ -132,15 +129,13 @@ void RunExperiment(string const &sInputFile, string const &sExperimentName, bool
     string const dataSetName(basename(sInputFile));
     Experiments experiments(dataSetName, dTimeout, bOutputLatex, bPrintHeader, adjacencyArray, vAdjacencyMatrix);
 
-    if (sExperimentName=="kernel-size") {
+    if (sExperimentName=="kernel-size-simple") {
         experiments.RunKernelSize();
     } else if (sExperimentName=="kernel-size-critical-set") {
         experiments.ComputeCriticalIndependentSetKernel();
     } else if (sExperimentName=="kernel-size-maximum-critical-set") {
-        experiments.ComputeMaximumCriticalIndependentSetKernel();
-    } else if (sExperimentName=="mcis") {
         experiments.ComputeMaximumCriticalIndependentSet();
-    } else if (sExperimentName=="kernel-component-no-reduction-miss") {
+    } else if (sExperimentName=="simple-mcs") {
         experiments.KernelizeAndRunComponentWiseMISS();
     } else {
         cout << "ERROR: Invalid experiment name: " << sExperimentName << endl << flush;
