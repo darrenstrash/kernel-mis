@@ -1,0 +1,10 @@
+\begin{table}
+\caption{We give the size $k_{\max}$ of largest connected component in the kernel from each reduction technique and the running time $t$ of each algorithm to compute an exact maximum independent set. We further give the number of vertices $n$ and edges $m$ for each graph.}
+\scriptsize
+\setlength{\tabcolsep}{.7ex}
+\begin{center}
+\begin{tabular}[tb]{lrr@{\hskip 13pt} rr@{\hskip 13pt} rr} 
+\toprule
+\multicolumn{3}{c}{Graph}  & \multicolumn{2}{c}{\ai}  &\multicolumn{2}{c}{\simple+\mcs}\\
+\multicolumn{1}{l}{Name}  & \multicolumn{1}{c}{$n$}  &  \multicolumn{1}{c}{$m$}      & \multicolumn{1}{c}{$k_{\max}$} & \multicolumn{1}{c}{$t$} & \multicolumn{1}{c}{$k_{\max}$} & \multicolumn{1}{c}{$t$}  \\
+\cmidrule(r){1-1}\cmidrule(r){2-2}\cmidrule(r){3-3}\cmidrule(r){4-4}\cmidrule(r){5-5}\cmidrule(r){6-6}\cmidrule(r){7-7} \\[2pt]

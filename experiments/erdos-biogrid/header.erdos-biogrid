@@ -1,0 +1,11 @@
+\begin{table}[!tbh]
+\caption{We give the kernel size $k$ and running time $t$ for each reduction technique on Erd\H{o}s and BioGRID graphs. We further give the number of vertices $n$ and edges $m$ for each graph.} 
+\label{table:kernel-erdos-biogrid}
+\scriptsize
+\setlength{\tabcolsep}{.7ex}
+\begin{center}
+\begin{tabular}[tb]{lrr@{\hskip 7pt} rr@{\hskip 7pt} rr@{\hskip 7pt} rr@{\hskip 7pt} rr} 
+\toprule
+\multicolumn{3}{c}{Graph} & \multicolumn{2}{c}{\critical}& \multicolumn{2}{c}{\maxcritical}  & \multicolumn{2}{c}{\advanced}&\multicolumn{2}{c}{\simple} \\
+\multicolumn{1}{l}{Name}  & \multicolumn{1}{c}{$n$}  &  \multicolumn{1}{c}{$m$}      & \multicolumn{1}{c}{$k$} & \multicolumn{1}{c}{$t$}    & \multicolumn{1}{c}{$k$} & \multicolumn{1}{c}{$t$} & \multicolumn{1}{c}{$k$} & \multicolumn{1}{c}{$t$} & \multicolumn{1}{c}{$k$} & \multicolumn{1}{c}{$t$}  \\  
+\cmidrule(r){1-1}\cmidrule(r){2-2}\cmidrule(r){3-3}\cmidrule(r){4-4}\cmidrule(r){5-5}\cmidrule(r){6-6}\cmidrule(r){7-7}\cmidrule(r){8-8}\cmidrule(r){9-9}\cmidrule{10-10}\cmidrule{11-11} \\[2pt]

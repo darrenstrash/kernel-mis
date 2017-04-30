@@ -1,0 +1,19 @@
+\documentclass[11pt]{article}
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage{fullpage}
+\usepackage{booktabs}
+
+\usepackage{numprint}
+\npdecimalsign{.} % we want . not , in numbers
+
+\newcommand{\AlgName}[1]{\ensuremath{\text{{\sf #1}}}}
+\newcommand{\advanced}{\AlgName{Advanced}}
+\newcommand{\simple}{\AlgName{Simple}}
+\newcommand{\critical}{\AlgName{Critical}}
+\newcommand{\maxcritical}{\AlgName{MaxCritical}}
+\newcommand{\ai}{\AlgName{B\&R}}
+\newcommand{\mcs}{\AlgName{MCS}}
+
+
+\begin{document}
