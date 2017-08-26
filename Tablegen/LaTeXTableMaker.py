@@ -70,6 +70,11 @@ class latex_tablemaker(object):
         string += end_str
         self.table.write(string)
 
+    def print_name(self, length, name):
+        string = "\\multicolumn{{{}}}{{{}}}{{{}}} \\\\ \n"
+        string = string.format(length, "l", name)
+        self.table.write(string)
+
     def print_row(self,reduced_array):
         #TODO validate number of columns
         self.table.write(" & ".join(reduced_array) + " \\\\\n")

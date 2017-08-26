@@ -4,19 +4,18 @@ time_out=3600
 seeds=5
 seeds_minus_one=$((seeds - 1))
 
-output_dir=erdos-biogrid.$time_out
 data_dir=../../data
 script_dir=../../scripts
 
 experiments=(erdos biogrid)
 
-rm -rf old.$output_dir
-mv $output_dir  old.$output_dir
-
-mkdir $output_dir
-
 for item in ${experiments[*]}; do
+  output_dir=$item
+  rm -rf old.$output_dir
+  mv $output_dir  old.$output_dir
+  mkdir $output_dir
   data_set=$data_dir/$item
+  
   for file_name in `ls -1 $data_set/*.graph`; do
     temp=${file_name##*/}
     temp=${temp%.*}
@@ -35,4 +34,4 @@ for item in ${experiments[*]}; do
   done
 done
 
-#python tablegen.py $output_dir
+python tablegen.py
