@@ -29,8 +29,10 @@ class latex_publication(latex_tablemaker):
         for head in heads:
             temp_str = "\\hskip {}".format(padding)
             temp_str = "@{{{}}} ".format(temp_str)
+            key_str = ""
             for i in range(head[1]):
-                temp_str =self.align(columns_list[counter+i])+ temp_str
+                key_str +=latex_tablemaker.align(columns_list[counter+i])
+            temp_str = key_str + temp_str
             counter += head[1]
             temp += temp_str
         temp = temp[:temp.rfind("@")]
@@ -56,7 +58,7 @@ class latex_publication(latex_tablemaker):
         string += end_str
         temp = "\\cmidrule({}){{{}-{}}}"
         for i in range(len(columns_list)):
-            string += temp.format(self.align(columns_list[i]), i+1, i+1)
+            string += temp.format(latex_tablemaker.align(columns_list[i]), i+1, i+1)
         string += end_str
         self.table.write(string)
 

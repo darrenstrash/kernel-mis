@@ -26,7 +26,8 @@ class latex_tablemaker(object):
     def set_author(self, author):
         self.table.write("\\author{{{}}}\n".format(author))
 
-    def align(self, key):
+    @staticmethod
+    def align(key):
         right = "r"
         left = "l"
         if latex_tablemaker.is_float(key):
@@ -45,7 +46,7 @@ class latex_tablemaker(object):
         string += "\\begin{longtable}[!t]"
         key_alignment = ""
         for key in columns_list:
-            key_alignment += self.align(key) + "|"
+            key_alignment += latex_tablemaker.align(key) + "|"
         key_alignment[:-1]
         string += "{{{}}}\n".format(key_alignment)
         self.table.write(string)
@@ -64,7 +65,7 @@ class latex_tablemaker(object):
             if i == 0:
                 string += "{{{}}} &\n".format(names[0])
             else:
-                string += temp_str.format(1, self.align(columns_list[i]),names[i])
+                string += temp_str.format(1, latex_tablemaker.align(columns_list[i]),names[i])
 
         string = string[:-2]
         string += end_str
