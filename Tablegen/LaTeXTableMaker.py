@@ -88,11 +88,7 @@ class latex_tablemaker(object):
         string += "\\end{document}\n"
         self.table.write(string)
         self.table.close()
-        self.pdf()
-
-    def pdf(self):
         subprocess.Popen(["pdflatex", self.file_name])
-        #subprocess.Popen(["open", self.file_name])
 
     @staticmethod
     def is_float(string):

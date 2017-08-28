@@ -1,6 +1,5 @@
 #! /usr/bin/python
 
-import os
 import subprocess
 from LaTeXTableMaker import latex_tablemaker
 
@@ -11,7 +10,6 @@ class latex_publication(latex_tablemaker):
         self.file_name = experiment_name+".tex"
         doc_type = "[11pt]{article}\n"
         self.default_packages = ["longtable", "amsmath", "fullpage", "pdflscape", "booktabs"]
-        #os.remove("labeling.self.table.tex")
         self.table = open(self.file_name, 'w')
         self.table.write("\\documentclass" + doc_type)
 
