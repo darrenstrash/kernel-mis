@@ -11,10 +11,10 @@ class table_writer(object):
     """docstring for table_writer."""
 
     def __init__(self):
-        self.experiment_lst = defaultdict(data_cruncher)
+        self.experiment_list = defaultdict(data_cruncher)
         self.output = None
-        self.names = []
-        self.sub_headers = []
+        self.names = [] #identify different subtables in an experiment
+        self.sub_headers = [] #displayed names for the subtables
 
     @staticmethod
     def one_row(hash_list, columns_list):
@@ -104,7 +104,7 @@ class table_writer(object):
 
 
     def add_experiment(self, experiment, experiment_name, sub_header=""):
-        self.experiment_lst[experiment_name] = experiment
+        self.experiment_list[experiment_name] = experiment
         self.names.append(experiment_name)
         self.sub_headers.append(sub_header)
 
@@ -116,20 +116,21 @@ class table_writer(object):
 
     def write_sub_table(self, name, table, columns_list):
         rows = table.get_rows()
-        self.output.print_name(len(table.get_data(rows[0])), name) #TODO print_name in TableWriters in multiple sub_tables
+        if(len(self.experiment_list) > 1):
+            self.output.print_name(len(table.get_data(rows[0])), name)
         for row in rows:
             reduced_array = list(row)
             reduced_array += table_writer.one_row(table.get_data(row), columns_list)
             self.output.print_row(reduced_array)
 
     def write_table(self, column_names, column_heads, columns_list, caption):
-        rows = self.experiment_lst[self.names[0]].get_rows()
+        rows = self.experiment_list[self.names[0]].get_rows()
         example = list(rows[0])
-        example += table_writer.one_row(self.experiment_lst[self.names[0]].get_data(rows[0]), columns_list) #template for aligning the output
+        example += table_writer.one_row(self.experiment_list[self.names[0]].get_data(rows[0]), columns_list) #template for aligning the output
         self.output.begin(example, column_heads, caption)
         self.output.column_names(column_names, column_heads, example)
 
         for i in range(len(self.names)):
-            self.write_sub_table(self.sub_headers[i], self.experiment_lst[self.names[i]], columns_list)
+            self.write_sub_table(self.sub_headers[i], self.experiment_list[self.names[i]], columns_list)
 
         self.output.footer()

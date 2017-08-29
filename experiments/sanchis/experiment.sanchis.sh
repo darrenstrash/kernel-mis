@@ -30,4 +30,4 @@ for file_name in `ls -1 $sanchis_data_set/*.graph`; do
   done
 done
 
-python tablegen.py $output_dir
+python tablegen.py
