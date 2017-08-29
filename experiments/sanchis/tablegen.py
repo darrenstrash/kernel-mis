@@ -19,7 +19,7 @@ column_names = ["n", "m", "q(G)", "k", "t","t-avg", "k", "t","t-avg", "k", "t", 
 
 experiment_name = "Sanchis"
 experiments = ["sanchis"]
-#sub_headers = []
+#sub_headers = [] subheadings for each experiment
 table_format = "latex_publication" #latex, latex_publication, markdown
 caption = "We give the kernel size k and running time t for each reduction technique on synthetically- generated Sanchis data sets. We also list the data used to generate the graphs: the number of vertices n, number of edges m, and independence number q(G)."
 
@@ -31,6 +31,6 @@ for i in range(len(experiments)):
     exp = data_cruncher()
     exp.process_dir(temp_dir, keys_list)
     exp.validate_data(same_keys_list, different_keys_list)
-    table.add_experiment(exp, experiments[i]) #sub_headers optional
+    table.add_experiment(exp, experiments[i]) #sub_headers[i] optional
 
 table.write_table(column_names, column_heads, columns_list, caption)
