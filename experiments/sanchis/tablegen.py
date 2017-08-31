@@ -19,7 +19,7 @@ column_names = ["n", "m", "q(G)", "k", "t","t-avg", "k", "t","t-avg", "k", "t", 
 
 experiment_name = "Sanchis"
 experiments = ["sanchis"]
-#sub_headers = [] subheadings for each experiment
+sub_headers = [] #subheadings for each experiment
 table_format = "latex_publication" #latex, latex_publication, markdown
 caption = "We give the kernel size k and running time t for each reduction technique on synthetically- generated Sanchis data sets. We also list the data used to generate the graphs: the number of vertices n, number of edges m, and independence number q(G)."
 
