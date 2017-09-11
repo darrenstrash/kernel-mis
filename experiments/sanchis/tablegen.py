@@ -2,9 +2,8 @@
 
 import sys
 import os
-sys.path.append("../../Tablegen")
-from DataCruncher import data_cruncher
-from TableWriter import table_writer
+sys.path.append("../../")
+from Tablegen import *
 
 same_keys_list = []
 different_keys_list = []
@@ -17,6 +16,7 @@ column_heads = [("Graph", 3), ("Critical", 3), ("Maxcritical", 3), ("Simple", 3)
 #column_heads = [] #empty for non publication table
 column_names = ["n", "m", "q(G)", "k", "t","t-avg", "k", "t","t-avg", "k", "t", "t-avg"] #start with names for each key in keys_list
 
+compare_cols = ["min", 4, 7] #highlight maximum or minimum, zero-indexed count in column_names
 experiment_name = "Sanchis"
 experiments = ["sanchis"]
 sub_headers = [] #subheadings for each experiment
@@ -33,4 +33,4 @@ for i in range(len(experiments)):
     exp.validate_data(same_keys_list, different_keys_list)
     table.add_experiment(exp, experiments[i]) #sub_headers[i] optional
 
-table.write_table(column_names, column_heads, columns_list, caption)
+table.write_table(column_names, column_heads, columns_list, compare_cols, caption)
