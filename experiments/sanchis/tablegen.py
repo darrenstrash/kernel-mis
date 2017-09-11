@@ -16,7 +16,7 @@ column_heads = [("Graph", 3), ("Critical", 3), ("Maxcritical", 3), ("Simple", 3)
 #column_heads = [] #empty for non publication table
 column_names = ["n", "m", "q(G)", "k", "t","t-avg", "k", "t","t-avg", "k", "t", "t-avg"] #start with names for each key in keys_list
 
-compare_cols = ["min", 4, 7] #highlight maximum or minimum, zero-indexed count in column_names
+compare_cols = ["min", 4, 7, 10] #highlight maximum or minimum, zero-indexed count in column_names
 experiment_name = "Sanchis"
 experiments = ["sanchis"]
 sub_headers = [] #subheadings for each experiment
