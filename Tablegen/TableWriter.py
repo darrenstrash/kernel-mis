@@ -140,7 +140,7 @@ class table_writer(object):
             idx = table_writer.compare_columns(reduced_array, compare_cols)
             self.output.print_row(reduced_array, idx)
 
-    def write_table(self, column_names, column_heads, columns_list, compare_cols, caption):
+    def write_table(self, column_names, column_heads, columns_list, compare_cols=[], caption=""):
         rows = self.experiment_list[self.names[0]].get_rows()
         example = list(rows[0])
         example += table_writer.one_row(self.experiment_list[self.names[0]].get_data(rows[0]), columns_list) #template for aligning the output

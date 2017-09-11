@@ -79,7 +79,8 @@ class latex_tablemaker(object):
 
     def print_row(self,reduced_array, idx):
         #TODO validate number of columns
-        reduced_array[idx] = "\\textbf{{{}}}".format(reduced_array[idx])
+        if idx is not None:
+            reduced_array[idx] = "\\textbf{{{}}}".format(reduced_array[idx])
         self.table.write(" & ".join(reduced_array) + " \\\\\n")
 
     def footer(self):
