@@ -3,7 +3,7 @@
 import sys
 import os
 sys.path.append("../../")
-from Tablegen import *
+from table_gen import *
 
 same_keys_list = []
 different_keys_list = []
