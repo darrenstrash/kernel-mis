@@ -2,7 +2,6 @@
 
 import sys
 import os
-sys.path.append("../../")
 from table_gen import *
 
 same_keys_list = []
