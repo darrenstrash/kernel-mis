@@ -1,6 +1,5 @@
 #! /usr/bin/python
 
-import os
 from table_gen import *
 
 same_keys_list = []
@@ -18,14 +17,13 @@ compare_cols = ["min", 4, 6] #highlight max or min, zero-indexed count in column
 experiment_name = "Erdos-BioGRID"
 experiments = ["erdos", "biogrid"]
 sub_headers = ["Erdos Graphs", "BioGRID Graphs"]
-table_format = "latex_publication" #latex, latex_publication, markdown
+table_format = "latex" #latex, latex_publication, markdown
 caption = "We give the kernel size k and running time t for each reduction technique on synthetically- generated Sanchis data sets. We also list the data used to generate the graphs: the number of vertices n, number of edges m, and independence number q(G)."
 
-data_dir = os.getcwd()
 table = table_writer()
 table.initialize(experiment_name, table_format, title, author) #packages-optional last argument
 for i in range(len(experiments)):
-    temp_dir = data_dir + "/" + experiments[i]
+    temp_dir = experiments[i] + '/'
     exp = data_cruncher()
     exp.process_dir(temp_dir, keys_list)
     exp.validate_data(same_keys_list, different_keys_list)
