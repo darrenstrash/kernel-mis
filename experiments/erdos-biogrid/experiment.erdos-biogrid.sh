@@ -4,7 +4,7 @@ time_out=3600
 seeds=5
 seeds_minus_one=$((seeds - 1))
 
-data_dir=../../data_2
+data_dir=../../data
 script_dir=../../scripts
 
 experiments=(erdos biogrid)
