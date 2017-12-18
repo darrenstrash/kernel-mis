@@ -1,10 +1,12 @@
 #! /bin/bash
 
 time_out=3600
+seeds=5
+seeds_minus_one=$((seeds - 1))
 
-output_dir=sanchis.$time_out
+output_dir=sanchis
 
-data_dir=../../data/
+data_dir=../../data
 script_dir=../../scripts/
 sanchis_data_set=$data_dir/sanchis
 
@@ -12,19 +14,20 @@ rm -rf old.$output_dir
 mv $output_dir  old.$output_dir
 
 mkdir $output_dir
+for file_name in `ls -1 $sanchis_data_set/*.graph`; do
+  temp=${file_name##*/}
+  temp=${temp%.*}
+  graph_size=$($script_dir/graph.size.sh $file_name)
+  independence_size=$(./sanchis.independence.size.sh $file_name)
 
-$script_dir/graph.size.sh         $sanchis_data_set           | tee $output_dir/sanchis.graph.size
-./sanchis.independence.size.sh    $sanchis_data_set           | tee $output_dir/sanchis.independence.size
-$script_dir/critical.size.sh      $sanchis_data_set $time_out | tee $output_dir/sanchis.critical.size
-$script_dir/maxcritical.size.sh   $sanchis_data_set $time_out | tee $output_dir/sanchis.maxcritical.size
-$script_dir/simple.size.time.sh   $sanchis_data_set $time_out | tee $output_dir/sanchis.simple.size
-$script_dir/advanced.size.time.sh $sanchis_data_set $time_out | tee $output_dir/sanchis.advanced.size
+  for seed in $(seq 0 $seeds_minus_one); do
+    log_file=$output_dir/log.$temp.$seed
+    $script_dir/critical.size.sh      $file_name $time_out | tee -a $log_file
+    $script_dir/maxcritical.size.sh   $file_name $time_out | tee -a $log_file
+    $script_dir/simple.size.time.sh   $file_name $time_out | tee -a $log_file
+    echo "$graph_size" >> $log_file
+    echo "$independence_size" >> $log_file
+  done
+done
 
-cp header.sanchis $output_dir/
-cp footer.sanchis $output_dir/
-cp mk_sanchis_table_data.py $output_dir/
-
-cd $output_dir
-cat header.sanchis > sanchis.table.tex
-python mk_sanchis_table_data.py >> sanchis.table.tex
-cat footer.sanchis >> sanchis.table.tex
+python tablegen.py
